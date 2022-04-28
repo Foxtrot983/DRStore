@@ -6,7 +6,7 @@ from .models import Category, Product
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ['pk', 'username', 'first_name', 'last_name', 'email', 'date_joined']
+        fields = ['username', 'first_name', 'last_name', 'email', 'date_joined']
 
 class CategorySerializer(ModelSerializer):
     class Meta:

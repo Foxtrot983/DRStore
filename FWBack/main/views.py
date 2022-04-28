@@ -1,4 +1,4 @@
-from multiprocessing import context
+from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
@@ -12,12 +12,12 @@ from .models import Category, Product
 from django.shortcuts import render
 #from rest_framework import generics
 
-'''@api_view()
+@api_view()
 def user(request: Request):
     return Response({
         'data': UserSerializer(request.user).data
     })
-'''
+
 @api_view(['GET', 'POST'])
 def categoryView(request):
     if request.method == 'GET':

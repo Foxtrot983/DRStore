@@ -84,23 +84,23 @@ def productView(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def category_detail(request, pk):
     try:
-        category=Category.objects.get(pk=pk)
+        product=Product.objects.get(pk=pk)
     except Category.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
-        serializer = CategorySerializer(category, context = {'request': request})
+        serializer = CategorySerializer(product, context = {'request': request})
         return Response(serializer.data)
 
     elif request.method == 'PUT':
-        serializer = CategorySerializer(category, data=request.data, context={'request': request})
+        serializer = CategorySerializer(product, data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
-        category.delete()
+        product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET', 'PUT', 'DELETE'])
